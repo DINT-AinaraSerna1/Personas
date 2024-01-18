@@ -11,7 +11,7 @@ namespace Personas.modelo
     {
         private string nombre;
         private int edad;
-        private Nacionalidad nacionalidad;
+        private string nacionalidad;
 
         public string Nombre
         {
@@ -23,14 +23,14 @@ namespace Personas.modelo
             get => edad;
             set => SetProperty(ref edad, value);
         }
-        public Nacionalidad Nacionalidad 
+        public string Nacionalidad 
         { 
             get => nacionalidad;
             set => SetProperty(ref nacionalidad, value);
         }
 
         public Persona() { }
-        public Persona(string nombre, int edad, Nacionalidad nacionalidad) 
+        public Persona(string nombre, int edad, string nacionalidad) 
         {
             this.nombre = nombre;
             this.edad = edad;

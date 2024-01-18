@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Personas.Vistas.Lista;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,16 @@ using System.Windows.Shapes;
 namespace Personas
 {
     /// <summary>
-    /// Lógica de interacción para Formulario.xaml
+    /// Lógica de interacción para Lista.xaml
     /// </summary>
-    public partial class Formulario : UserControl
+    public partial class Lista : UserControl
     {
-        public Formulario()
+        private ListaVM vmLista;
+        public Lista()
         {
             InitializeComponent();
+            vmLista = new ListaVM();
+            DataContext = vmLista;
         }
     }
 }

@@ -8,14 +8,15 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel >
         <Label>Nombre</Label>
-        <TextBox></TextBox>
+        <TextBox x:Name="nombreTextBox"></TextBox>
         <Label>Edad</Label>
-        <TextBox></TextBox>
+        <TextBox x:Name="edadTextBox"></TextBox>
         <Label>Nacionalidad</Label>
         <WrapPanel>
             <ComboBox x:Name="nacionalidadComboBox"
                 ItemsSource="{Binding Path=Nacionalidades}"/>
-            <Button>+</Button>
+            <Button Width="20" Command="{Binding Path=AbrirVentanaCommand}">+</Button>
         </WrapPanel>
+        <Button x:Name="aceptarButton" Click="AceptarButton_Click">Aceptar</Button>
     </StackPanel>
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Personas.modelo;
+using Personas.Servicio;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
@@ -10,8 +11,8 @@ namespace Personas
 {
     class MainWindowVM : ObservableObject
     {
-        private UserControl contenidoVista;
-        public UserControl ContenidoVista
+        private UserControl? contenidoVista;
+        public UserControl? ContenidoVista
         {
             get => contenidoVista;
             set => SetProperty(ref contenidoVista, value);
@@ -20,34 +21,18 @@ namespace Personas
         public RelayCommand Vista1Command { get; }
         public RelayCommand Vista2Command { get; }
 
-        private NavegacionService servicioUserControl;
-
-        private ObservableCollection<Persona> listaPersona;
-        public ObservableCollection<Persona> ListaPersona
-        {
-            get => listaPersona;
-            set => SetProperty(ref listaPersona, value);
-        }
-
-        private Nacionalidad[] nacionalidades;
-        public Nacionalidad[] Nacionalidades
-        {
-            get => nacionalidades;
-            set => SetProperty(ref nacionalidades, value);
-        }
+        private NavegacionService servicioUserControl = new NavegacionService();
 
         public MainWindowVM() 
         {
-            servicioUserControl = new NavegacionService();
-            Vista1Command = new RelayCommand(CargaFormaulario);
+            Vista1Command = new RelayCommand(CargaFormulario);
             Vista2Command = new RelayCommand(CargaLista);
-            Nacionalidades = (Nacionalidad[])Enum.GetValues(typeof(Nacionalidad));
         }
 
         private void CargaLista()
             => ContenidoVista = servicioUserControl.CargarLista();
 
-        private void CargaFormaulario()
+        private void CargaFormulario()
             => ContenidoVista = servicioUserControl.CargarFormulario();
     }
 }
